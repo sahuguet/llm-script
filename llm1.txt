@@ -1,0 +1,12 @@
+{"friend": "Arnaud"}
+
+"""how
+    are
+
+    you doing {{friend}} """
+
+MAKE_PROMPT
+
+{"model": "gpt-3.5", "temperature": 0}
+
+CALL
