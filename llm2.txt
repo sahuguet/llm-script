@@ -1,0 +1,25 @@
+{ "habitat": "ocean"}
+"""pick a random animal from the {{habitat}}. Return just the name, as json, using `animal`."""
+MAKE_PROMPT
+{"model": "gpt-3.5", "temperature": 0.8}
+CALL
+--  CALL pushes e.g. { "animal": "jaguar" } to the stack and we convert to JSON.
+JSON
+{ "genre": "princess" }
+"""Pick a random fictional character from children's book talkinbg about {{genre}}. Return just the name, as json, using `character`."""
+MAKE_PROMPT
+{"model": "gpt-3.5", "temperature": 0.8}
+CALL
+-- CALL should push e.g. { "character": "Harry Potter" } to the stack and we convert to JSON.
+JSON
+ADD2
+-- We add both answers together
+"""Make a short story (50 words) featuring {{animal|default("frog")}} and {{character|default("shrek")}}."""
+MAKE_PROMPT
+{"model": "gpt-3.5", "temperature": 0.8}
+CALL
+
+
+-- TODO: Introduce CALL_DEFAULT to invoke the LLM with default params. Only consumes one stack slot.
+-- QUESTION: should CALL add something to the stack? update the last slack slot? update a gloabl variable?
+-- QUESTION: when sending to the LLM, should be include the previous conversations.
