@@ -1,0 +1,19 @@
+"""Tell me a kid appropriate very funny joke."""
+[ {"model": "gpt-3.5", "temperature": 0.5}, {"model": "gpt-4", "temperature": 0.6}, {"model": "gpt-4o", "temperature": 0.7} ]
+CALL
+-- We call the same prompt N times on different models. We should run all of them in parallel.
+-- Back on the stack should be an array of dict, with each item repreenting the answer from the LLM.
+"""Pick the best joke among the jokes.
+<jokes>
+{%- for joke in array %}
+<joke>
+{{ joke -}}
+ </joke>
+{% endfor %}
+</jokes>
+and explain why
+"""
+MAKE_PROMPT
+{"model": "gpt-4o", "temperature": 0}
+CALL
+

@@ -1,0 +1,28 @@
+"""Tell me a kid appropriate very funny joke."""
+DUP
+{"model": "gpt-3.5", "temperature": 0.5}
+CALL
+OVER
+{"model": "gpt-4", "temperature": 0.6}
+CALL
+ADD2
+SWAP
+{"model": "gpt-4o", "temperature": 0.7}
+CALL
+ADD2
+JSON_ARRAY
+-- We now have a list of jokes.
+"""Pick the best joke among the jokes.
+<jokes>
+{%- for joke in array %}
+<joke>
+{{ joke -}}
+ </joke>
+{% endfor %}
+</jokes>
+and explain why
+"""
+MAKE_PROMPT
+{"model": "gpt-4o", "temperature": 0}
+CALL
+
